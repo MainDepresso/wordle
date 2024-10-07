@@ -1,10 +1,10 @@
 import './Square.css';
-import {useState} from 'react';
+//import {useState} from 'react';
 
 function Square({row, column, attempt}) {
-  const [letter, setLetter] = useState(' ')
+  /*const [letter, setLetter] = useState(' ')*/
   return (
-<input className="cuadrado" disabled={row != attempt ? "true" : ""} /*type="text" value={letter} onChange={(e)=> setLetter(e.target.value)}*/></input>
+<input className="cuadrado" disabled={row !== attempt ? "true" : ""} /*type="text" value={letter} onChange={(e)=> setLetter(e.target.value)}*/></input>
   );
 }
 

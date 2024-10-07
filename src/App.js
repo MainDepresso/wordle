@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+/*import logo from './logo.svg';*/
 import './App.css';
 import {useState} from 'react';
 import Square from './Square';
@@ -6,7 +6,7 @@ import Square from './Square';
 
 function App() {
 
-  const [currentAttempt, setCurrentAttempt] = useState(1);
+  const [currentAttempt/*, setCurrentAttempt*/] = useState(1);
 
   return (
     <div className="App">
