@@ -3,10 +3,56 @@ import './App.css';
 import {useState} from 'react';
 import Square from './Square';
 
+export const solution ='CLASE';
+
+const replaceAt=function(cadena, index, char){
+  var a=cadena.split("");
+  a(index)=char;
+  return a.join("");
+}
 
 function App() {
 
   const [currentAttempt/*, setCurrentAttempt*/] = useState(1);
+  const [messageWinner,setMessageWinner] = useState("");
+
+  const guesses = ["     ", "     ","     " , "     ", "     "];
+
+  const handleSquareChange=(parameters) =>
+    {
+     
+      guesses[parameters.row-1]= replaceAt(guesses[parameters.row-1], parameters.column-1,parameters.letter);
+      let isAttempComplete=true;
+      for(let i=0;i<5;i++)
+      {
+        if(guesses[parameters.row-1].charAt(i)==" ")
+          {
+            isAttempComplete=false;
+            break;
+          }
+      }
+      if (isAttempComplete) 
+        {
+          if(guesses[parameters.row-1] == solution)
+          {
+            setMessageWinner("CONGRATULATIONS");
+            setCurrentAttempt(10); 
+          }
+          else 
+          {
+            if (currentAttempt<5) 
+              {
+                setCurrentAttempt(currentAttempt+1);
+              } 
+              else
+              {
+                setMessageWinner("Game Over");
+                setCurrentAttempt(10); 
+              }
+          }
+        }
+      }
+
 
   return (
     <div className="App">
@@ -54,6 +100,14 @@ function App() {
             <Square row="5" column="3" attempt={currentAttempt}></Square>
             <Square row="5" column="4" attempt={currentAttempt}></Square>
             <Square row="5" column="5" attempt={currentAttempt}></Square>
+            </div>
+
+            <div id="row"  className='row' > 
+            <Square row="6" column="1" attempt={currentAttempt}></Square>
+            <Square row="6" column="2" attempt={currentAttempt}></Square>
+            <Square row="6" column="3" attempt={currentAttempt}></Square>
+            <Square row="6" column="4" attempt={currentAttempt}></Square>
+            <Square row="6" column="5" attempt={currentAttempt}></Square>
             </div>
 
           </div>
